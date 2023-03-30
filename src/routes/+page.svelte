@@ -5,6 +5,7 @@
   import { ESTIMATED_CHAR_LIMIT } from "$lib/constants";
   import Select from 'svelte-select';
   import Icon from "@iconify/svelte";
+  import SvelteSeo from "svelte-seo";
   import { localStorageStore } from '$lib/localStorageStore';
 
   const apiKey = localStorageStore('apiKey', '');
@@ -137,6 +138,33 @@
 
 </script>
 
+<SvelteSeo
+    openGraph={{
+    title: "Midjourney Prompt Generator",
+    description: "Midjourney v5 Gpt 3.5 Turbo Prompt Generator",
+    keywords: "Midjourney" +
+      " OpenAI" +
+      " GPT-3" +
+      " gpt-3.5-Turbo" +
+      " Midjourney Prompt Generator" +
+      " Prompt Generator" +
+      " Midjourney v5 Gpt 3.5 Turbo Prompt Generator" +
+      " AI Prompt Generator" +
+      " AI Prompt" +
+      " AI Prompt Generator",
+    canonical: "https://midjourney-promptomatic.netlify.app/",
+    url: "https://midjourney-promptomatic.netlify.app/",
+    type: 'website',
+    images: [
+      {
+        url: "https://midjourney-promptomatic.netlify.app/cover_seo.png",
+        width: 1536,
+        height: 768,
+        alt: "An isometric factory making art. Midjourney Prompt Generator Cover Image",
+      }
+     ]
+  }}
+/>
 <svelte:head>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>

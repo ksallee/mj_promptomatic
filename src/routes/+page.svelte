@@ -173,6 +173,7 @@
       font-size: 12px;
     }
   </style>
+  <title>Midjourney ChatGPT prompt generator</title>
 </svelte:head>
 
 <main>

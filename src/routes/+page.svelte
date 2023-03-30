@@ -162,18 +162,12 @@
       " AI Prompt Generator" +
       " AI Prompt" +
       " AI Prompt Generator",
-    canonical: "https://midjourney-promptomatic.netlify.app/",
-    url: "https://midjourney-promptomatic.netlify.app/",
+    canonical: "https://midjourney-prompt-generator.netlify.app",
+    url: "https://midjourney-prompt-generator.netlify.app",
     type: 'website',
     images: [
       {
-        url: "https://midjourney-promptomatic.netlify.app/cover_seo.png",
-        width: 1536,
-        height: 768,
-        alt: "An isometric factory making art. Midjourney Prompt Generator Cover Image",
-      },
-      {
-        url: "https://midjourney-promptomatic.netlify.app/cover_seo_2.png",
+        url: "https://midjourney-prompt-generator.netlify.app/cover_seo_2.png",
         width: 1536,
         height: 768,
         alt: "An isometric factory making art. Midjourney Prompt Generator Cover Image",

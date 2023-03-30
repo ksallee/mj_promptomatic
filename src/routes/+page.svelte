@@ -138,6 +138,16 @@
 
 </script>
 
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+    }
+  </style>
+  <title>Midjourney ChatGPT prompt generator</title>
+</svelte:head>
 <SvelteSeo
     openGraph={{
     title: "Midjourney Prompt Generator",
@@ -165,16 +175,6 @@
      ]
   }}
 />
-<svelte:head>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-    }
-  </style>
-  <title>Midjourney ChatGPT prompt generator</title>
-</svelte:head>
 
 <main>
   <div class="title">

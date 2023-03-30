@@ -171,6 +171,12 @@
         width: 1536,
         height: 768,
         alt: "An isometric factory making art. Midjourney Prompt Generator Cover Image",
+      },
+      {
+        url: "https://midjourney-promptomatic.netlify.app/cover_seo_2.png",
+        width: 1536,
+        height: 768,
+        alt: "An isometric factory making art. Midjourney Prompt Generator Cover Image",
       }
      ]
   }}

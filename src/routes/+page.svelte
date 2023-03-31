@@ -272,9 +272,9 @@
 
   <footer>
     <p>
-      This project was made using Midjourney v5 prompt generator, with the help
-      of ChatGPT by OpenAI. Learn more about how it was created
-      <a href="https://example.com/about" target="_blank">here</a>.
+      This project was made using Svelte, with the help
+      of ChatGPT 4 by OpenAI. Learn more about how it was created
+      <a href="https://medium.com/@kevin.sallee/unleashing-creativity-with-ai-my-journey-with-chatgpt-4-and-midjourney-art-2fddd6f9271b" target="_blank">here</a>.
     </p>
   </footer>
 </main>

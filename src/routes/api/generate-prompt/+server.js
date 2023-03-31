@@ -1,18 +1,19 @@
 import { MIDJOURNEY_EXPLANATION, PHOTOGRAPHER, PAINTER, CRAZY_ARTIST, FASHION_DESIGNER} from "$lib/constants";
-import {STREET_PHOTOGRAPHER, ARCHITECT, MOVIE_CONCEPT_ARTIST, GRAPHIC_DESIGNER, GRAPHIC_NOVEL_ARTIST} from "$lib/constants.js";
+import {STREET_PHOTOGRAPHER, ARCHITECT, MOVIE_CONCEPT_ARTIST, GRAPHIC_DESIGNER, GRAPHIC_NOVEL_ARTIST, WEIGHT_MASTER} from "$lib/constants.js";
 import {MIDJOURNEY_PROMPT_SMALL, MIDJOURNEY_PROMPT_MEDIUM, MIDJOURNEY_PROMPT_LARGE, MIDJOURNEY_PROMPT_TINY} from "$lib/constants.js";
 import { error, json } from '@sveltejs/kit';
 
 const personalities = {
   photographer: PHOTOGRAPHER,
   painter: PAINTER,
-  crazy_artist: CRAZY_ARTIST,
+  // crazy_artist: CRAZY_ARTIST,
   fashion_designer: FASHION_DESIGNER,
   street_photographer: STREET_PHOTOGRAPHER,
   architect: ARCHITECT,
   movie_concept_artist: MOVIE_CONCEPT_ARTIST,
   graphic_designer: GRAPHIC_DESIGNER,
   graphic_novel_artist: GRAPHIC_NOVEL_ARTIST,
+  weight_master: WEIGHT_MASTER
 
 };
 

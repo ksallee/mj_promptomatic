@@ -67,10 +67,15 @@
       label: "Architect",
       imgSrc: "architect.png",
     },
+    // {
+    //   key: "crazy_artist",
+    //   label: "Crazy Artist",
+    //   imgSrc: "crazy_artist.png",
+    // }
     {
-      key: "crazy_artist",
-      label: "Crazy Artist",
-      imgSrc: "crazy_artist.png",
+      key: "weight_master",
+      label: "Weight Master",
+      imgSrc: "weight_master.png",
     }
 
   ];
@@ -85,13 +90,6 @@
     isLoading = true;
 
     try {
-      console.log("Sending request to /api/generate-prompt with data:", {
-        prompt_text: $instructions,
-        personality_key: $selectedPersonality,
-        api_key: $apiKey,
-        num_replies: $nbResults[0],
-        prompt_length: $promptLength.value,
-      });
       const response = await fetch('/api/generate-prompt', {
         method: 'POST',
         headers: {

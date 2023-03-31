@@ -16,6 +16,7 @@
   const replies = localStorageStore('replies', []);
 
   let isLoading = false;
+  let isIdeasLoading = false;
   let errorMessage = "";
   let isCopied = [];
   $:buttonText = $nbResults[0] > 1 ? "Generate Prompts" : "Generate Prompt";
@@ -79,16 +80,47 @@
     }
 
   ];
+  async function handleSubmitIdea() {
+    if (!$apiKey) {
+      errorMessage = 'Please enter your API key.';
+      return;
+    }
+    errorMessage = null;
+    isIdeasLoading = true;
+    try {
+      const response = await fetch('/api/generate-idea', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          personality_key: $selectedPersonality,
+          api_key: $apiKey,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error:", errorData)
+        errorMessage = errorData.message || 'An unknown error occurred.';
+      } else {
+        const data = await response.json();
+        $instructions = data.idea;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      errorMessage = 'Error: ' + error;
+    }
+    isIdeasLoading = false;
+  }
 
   async function handleSubmit() {
     if (!$apiKey || !$instructions) {
       errorMessage = 'Please enter your API key and instructions.';
       return;
     }
-
     errorMessage = null;
     isLoading = true;
-
     try {
       const response = await fetch('/api/generate-prompt', {
         method: 'POST',
@@ -117,7 +149,6 @@
       errorMessage = 'Error: ' + error;
       $replies = [];
     }
-
     isLoading = false;
   }
   async function copyToClipboard(text, index) {
@@ -206,8 +237,16 @@
       </div>
     {/each}
   </div>
+  <div class="instructions-header">
+    <label class="instructions-label" for="instructions">Instructions:</label>
+    <button class="instructionsButton" on:click={handleSubmitIdea} disabled="{!$apiKey || isIdeasLoading}">I'm lazy!</button>
+    {#if isIdeasLoading}
+    <div class="loading">
+      <SyncLoader size="2.5" color="#5147a8" unit="rem" duration="0.5s"/>
+    </div>
+    {/if}
+  </div>
 
-  <label for="instructions">Instructions:</label>
   <textarea
       id="instructions"
       bind:value="{$instructions}"
@@ -278,6 +317,20 @@
 </main>
 
 <style>
+  .instructions-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .instructions-label{
+    margin-bottom: 0;
+  }
+  .instructionsButton{
+    margin: 0;
+    padding: 7px 12px;
+  }
   .logo{
     object-fit: cover;
     width: 45px;

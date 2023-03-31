@@ -34,35 +34,35 @@ In addition to --v 5, which should always be specified, MJ has several other par
 Be concise. MJ's length limit is based on CLIP (not GPT) tokenization; treat 60 words as a rough maximum. Mention everything about an object in one phrase; do not say "mask, ornately carved from wood" and then later "the mask can be seen hanging on the wall." Just say "ornate wooden mask hanging on wall" one time. Avoid imperative verbiage like "It should be portrayed" or "Please ensure the final picture" as these waste words. MJ is not "instructed." It associates metadata tags and has limited understanding of plain English. Use terse, comma-delimited phrases for different aspects of the image. Every single word should convey visually significant information.
 
 Examples:
-Input: A dog, aspect ratio 3/4 stylize 500 chaos 30 quality 2
-Output: /imagine prompt: Impressionist painting by Van Gogh of a playful terrier running through a field of wildflowers. Sunlight filtering through the trees, bright colors, yellow color scheme like "Sunflowers." Loose brushwork --v 5 --ar 3:4 --s 500 --chaos 30 --quality 2
-Input: spirit of the forest by Hayao Miyazaki and Studio Ghibli
-Output: /imagine prompt: Animated scene by Hayao Miyazaki and Studio Ghibli of a serene forest glade filled with vibrant, otherworldly creatures. Bathed in a warm, golden light, soft organic forms, and dreamlike atmosphere --v 5 --ar 1:1 --s 800 --chaos 20
-Input: Surreal landscape with melting clocks
-Output: /imagine prompt: Surrealist painting by Salvador Dali of a landscape with melting clocks. Dreamlike, distorted time --v 5 --s 400 --chaos 40
+`;
+
+export const MIDJOURNEY_PROMPT_LARGE = `Aim for a 100-word prompt, and never exceed 150 words.
+Input: A dark, cyberpunk city with rain and neon lights, inspired by Blade Runner and H.R. Giger
+Output: /imagine prompt: A detailed cyberpunk cityscape painting by H.R. Giger at night with Blade Runner influences. Rain-soaked streets, towering skyscrapers, neon lights illuminating the darkness. People walking under umbrellas, flying cars passing by. Dark, atmospheric, and surreal --v 5 --ar 16:9 --s 400 --chaos 50
 Input: A bustling city street with futuristic elements and vibrant colors, inspired by the works of various artists and styles
 Output: /imagine prompt: Neo-futuristic oil painting by Zaha Hadid of a bustling city street with a mix of contemporary and futuristic architecture. Vibrant colors, dynamic movement, and innovative designs. The cityscape is influenced by the works of Frank Gehry, Santiago Calatrava, and the art movement De Stijl, with geometric forms and primary colors. People walking and interacting, showcasing diverse fashion styles inspired by Alexander McQueen and Issey Miyake. Hovering vehicles and advanced technology are seamlessly integrated into the scene --v 5 --ar 16:9 --s 600 --chaos 20
 `;
 
-export const MIDJOURNEY_PROMPT_LARGE = `Instructions: Aim for a 100-word prompt, and never exceed 150 words.
-Example:
-Input: A dark, cyberpunk city with rain and neon lights, inspired by Blade Runner and H.R. Giger
-Output: /imagine prompt: A detailed cyberpunk cityscape painting by H.R. Giger at night with Blade Runner influences. Rain-soaked streets, towering skyscrapers, neon lights illuminating the darkness. People walking under umbrellas, flying cars passing by. Dark, atmospheric, and surreal --v 5 --ar 16:9 --s 400 --chaos 50`;
 
-export const MIDJOURNEY_PROMPT_MEDIUM = `Instructions: Aim for a 50-word prompt, and never exceed 70 words.
-Example:
+export const MIDJOURNEY_PROMPT_MEDIUM = `Aim for a 50-word prompt, and never exceed 70 words.
 Input: A serene autumn landscape with a river and colorful foliage
-Output: /imagine prompt: A picturesque oil painting by Claude Monet of a peaceful autumn landscape. River flowing gently, surrounded by colorful foliage. Warm hues of red, orange, and yellow dominate the scene. Soft brushstrokes, impressionistic style --v 5 --ar 4:3 --s 300 --chaos 20`;
+Output: /imagine prompt: A picturesque oil painting by Claude Monet of a peaceful autumn landscape. River flowing gently, surrounded by colorful foliage. Warm hues of red, orange, and yellow dominate the scene. Soft brushstrokes, impressionistic style --v 5 --ar 4:3 --s 300 --chaos 20
+Input: A dog, aspect ratio 3/4 stylize 500 chaos 30 quality 2
+Output: /imagine prompt: Impressionist painting by Van Gogh of a playful terrier running through a field of wildflowers. Sunlight filtering through the trees, bright colors, yellow color scheme like "Sunflowers." Loose brushwork --v 5 --ar 3:4 --s 500 --chaos 30 --quality 2
+Input: spirit of the forest by Hayao Miyazaki and Studio Ghibli
+Output: /imagine prompt: Animated scene by Hayao Miyazaki and Studio Ghibli of a serene forest glade filled with vibrant, otherworldly creatures. Bathed in a warm, golden light, soft organic forms, and dreamlike atmosphere --v 5 --ar 1:1 --s 800 --chaos 20
+`;
 
-export const MIDJOURNEY_PROMPT_SMALL = `Instructions: Aim for a 30-word prompt, and never exceed 45 words.
-Example:
+export const MIDJOURNEY_PROMPT_SMALL = `Aim for a 30-word prompt, and never exceed 45 words.
 Input: A futuristic cityscape with floating buildings
 Output: /imagine prompt: A digital painting by Syd Mead of a futuristic cityscape. Floating buildings, advanced technology, bright colors, and dynamic perspective --v 5 --ar 3:2 --s 200 --chaos 10`;
 
 export const MIDJOURNEY_PROMPT_TINY = `Instructions: Aim for a 20-word prompt, and never exceed 30 words.
-Example:
 Input: A cat sitting on a rooftop at sunset
-Output: /imagine prompt: Watercolor painting by Edward Hopper of a cat on a rooftop at sunset. Warm, golden light --v 5 --ar 1:1 --s 100 --chaos 5`;
+Output: /imagine prompt: Watercolor painting by Edward Hopper of a cat on a rooftop at sunset. Warm, golden light --v 5 --ar 1:1 --s 100 --chaos 5
+Input: Surreal landscape with melting clocks
+Output: /imagine prompt: Surrealist painting by Salvador Dali of a landscape with melting clocks. Dreamlike, distorted time --v 5 --s 400 --chaos 40`;
+
 
 
 export const PHOTOGRAPHER = `You are a talented photographer with expertise in creating stunning images using Midjourney. 

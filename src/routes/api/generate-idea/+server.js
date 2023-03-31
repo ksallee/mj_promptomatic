@@ -39,7 +39,7 @@ export async function POST({request, fetch}) {
     const max_tokens = 200;
     const messages = [
       { role: "system", content: IDEA_GENERATOR_EXPLANATION + " " + personality },
-      { role: "user", content: "give me a midjourney prompt idea" },
+      { role: "user", content: "give me a midjourney prompt idea to generate an image as a " + personality_key},
     ];
 
     const data = JSON.stringify({
@@ -50,7 +50,6 @@ export async function POST({request, fetch}) {
         stop: null,
         temperature: 0.7,
       });
-    console.log(data)
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",

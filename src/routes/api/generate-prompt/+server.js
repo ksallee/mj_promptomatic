@@ -1,4 +1,4 @@
-import { MIDJOURNEY_EXPLANATION, PHOTOGRAPHER, PAINTER, CRAZY_ARTIST, FASHION_DESIGNER} from "$lib/constants";
+import { MIDJOURNEY_EXPLANATION_SHORT, MIDJOURNEY_EXPLANATION, PHOTOGRAPHER, PAINTER, CRAZY_ARTIST, FASHION_DESIGNER} from "$lib/constants";
 import {STREET_PHOTOGRAPHER, ARCHITECT, MOVIE_CONCEPT_ARTIST, GRAPHIC_DESIGNER, GRAPHIC_NOVEL_ARTIST, WEIGHT_MASTER} from "$lib/constants.js";
 import {MIDJOURNEY_PROMPT_SMALL, MIDJOURNEY_PROMPT_MEDIUM, MIDJOURNEY_PROMPT_LARGE, MIDJOURNEY_PROMPT_TINY} from "$lib/constants.js";
 import { error, json } from '@sveltejs/kit';
@@ -36,6 +36,7 @@ export async function POST({request, fetch}) {
     const prompt_length_text = prompt_length_texts[prompt_length];
     console.log("prompt_length_text", prompt_length_text);
     const messages = [
+      { role: "system", content: MIDJOURNEY_EXPLANATION_SHORT},
       { role: "system", content: MIDJOURNEY_EXPLANATION },
       { role: "system", content: prompt_length_text },
       { role: "system", content: personality },

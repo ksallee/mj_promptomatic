@@ -1,12 +1,12 @@
 export const ESTIMATED_CHAR_LIMIT = 2800;
 
-export const MIDJOURNEY_EXPLANATION = `
+export const MIDJOURNEY_EXPLANATION_SHORT = `
 Your goal is to create Midjourney prompts as: /imagine prompt: [prompt with optional params]
 Optional parameters (--parameter [value]) are placed last. Nothing after them.
+Example: /imagine prompt: A dog --ar 3:4 --s 1000 --chaos 100 --v 5
 Midjourney V5 generates images from text. Add --v 5 at the end.
 VERY IMPORTANT: Avoid mainstream artists, think outside the box. If I say labyrinth, it shouldn't always be by Escher. Favor modern artists than the main ones that everyone knows like Van Gogh, Dali, etc. You can still use them
 but try to be creative. Do not use M.C. Escher, Van Gogh, Dali, Picasso, Monet, etc. except every once in a while.
-
 Important parameters:
 
 aspect ratios (--ar, default square, e.g. --ar 3:4)
@@ -18,6 +18,9 @@ Include angle, materials, technique for accurate results.
 Avoid unuseful formulations. Limit to important concepts.
 Prompt structure: [art technique] by [main artist] [subject]. [other optional artists/styles/influences] [optional details] [optional params]
 Never put anything after the optional parameters, or the prompt will fail.
+`
+
+export const MIDJOURNEY_EXPLANATION = `
 Be concise; limit to roughly 60 words. Combine object details, avoid imperative verbiage, and use terse, comma-delimited phrases. Use action verbs over prepositions and short copular verbs. Avoid pronouns, articles, passive voice, and unnecessary words.
 
 MJ can specify plural subjects, but has limited ability to be specific about them. Subjects should have at least some details, with exceptions (e.g., highly stylized representations such as silhouettes or icons).

@@ -241,8 +241,8 @@ Output: A visually striking infographic using symbols and icons to convey comple
 `;
 
 export const IDEA_GENERATOR_GRAPHIC_NOVEL_ARTIST = `
-Think about creating immersive and visually compelling images that tell a story or convey a mood, drawing inspiration from famous or obscure graphic novel artists, their styles, and innovative concepts within the realm of graphic novels.
-Only give ideas in the realm of graphic novels and comics.
+Think about creating immersive and visually compelling images that tell a story or convey a mood, drawing inspiration from these artists:
+Moebius, Francois Schuiten, Jean Giraud, Mike Mignola, Fiona Staples, Katsuhiro Otomo, Dave McKean, Jim Lee, Alex Ross, Jim Steranko, Bill Sienkiewicz, Frank Quitely, David Mazzucchelli, John Romita Jr., John Cassaday, John Byrne, Neal Adams, Jack Kirby, Steve Ditko, Joe Kubert, Alex Toth, Will Eisner, Bernie Wrightson, Mike Allred, Dave Gibbons, Dave Sim, Charles Burns, Chris Ware, Craig Thompson, Daniel Clowes, Charles Burns, Chris Ware, Craig Thompson, Daniel Clowes, David Mazzucchelli, Frank Miller, Frank Quitely, Jim Lee, Jim Steranko, John Byrne, John Cassaday, John Romita Jr., Neal Adams, Steve Ditko, Will Eisner, Alex Ross, Bill Sienkiewicz, Dave Gibbons, Dave McKean, Jack Kirby, Joe Kubert, Alex Toth, Bernie Wrightson, Mike Allred, Dave Sim, Katsuhiro Otomo, Mike Mignola, Fiona Staples
 Examples:
 Input: give me a midjourney prompt idea
 Output: A dramatic, noir-inspired cityscape with a mysterious figure in the shadows, reminiscent of the art of Frank Miller

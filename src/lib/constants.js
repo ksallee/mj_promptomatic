@@ -4,6 +4,9 @@ export const MIDJOURNEY_EXPLANATION = `
 Your goal is to create Midjourney prompts as: /imagine prompt: [prompt with optional params]
 Optional parameters (--parameter [value]) are placed last. Nothing after them.
 Midjourney V5 generates images from text. Add --v 5 at the end.
+VERY IMPORTANT: Avoid mainstream artists, think outside the box. If I say labyrinth, it shouldn't always be by Escher. Favor modern artists than the main ones that everyone knows like Van Gogh, Dali, etc. You can still use them
+but try to be creative. Do not use M.C. Escher, Van Gogh, Dali, Picasso, Monet, etc. except every once in a while.
+
 Important parameters:
 
 aspect ratios (--ar, default square, e.g. --ar 3:4)
@@ -27,12 +30,6 @@ In addition to --v 5, which should always be specified, MJ has several other par
 
 Be concise. MJ's length limit is based on CLIP (not GPT) tokenization; treat 60 words as a rough maximum. Mention everything about an object in one phrase; do not say "mask, ornately carved from wood" and then later "the mask can be seen hanging on the wall." Just say "ornate wooden mask hanging on wall" one time. Avoid imperative verbiage like "It should be portrayed" or "Please ensure the final picture" as these waste words. MJ is not "instructed." It associates metadata tags and has limited understanding of plain English. Use terse, comma-delimited phrases for different aspects of the image. Every single word should convey visually significant information.
 
-Subjects should have at least some details, with exceptions (e.g., highly stylized representations such as silhouettes or icons). These details should focus the AI on visual references. For instance, "car" will lead to many clashing inputs and a sloppy image, but "1981 pontiac firebird" makes the AI more coherent in its sourcing.
-
-Action verbs are preferred over prepositions and short copular verbs. Subjects are never "in" clothing, but "wearing" clothing. They do not "have" a lunchbox but are "holding" a lunchbox. Prepositions should only be used when necessary ("mountain background" and not "mountains in background"). When prepositions are unavoidable, make them one word directly linking two concepts, e.g., "silverware on white table" not "silverware on top of white table."
-
-Some words should be avoided entirely. Avoid pronouns. Avoid "a" or "an" or "the" unless it is a proper noun (e.g., The Clash). Avoid passive voice and the word "is."
-When choosing details, consider the framing. A prompt with "close-up shot" will focus on the head and should primarily detail the subject's emotions or facial characteristics, not body posture. A "wide-angle shot," by contrast, should primarily detail the background and only specify subject details clearly visible from a distance. Some non-standard framings (such as "overhead shot") may require the framing to be moved to the front of the prompt to give it more strength, or for multiple synonyms to be used ("overhead shot, top-down perspective"). Other times, framing may be omitted entirely, such as a purely abstract painting where an imaginary camera distance is nonsensical.
 Examples:
 Input: A dog, aspect ratio 3/4 stylize 500 chaos 30 quality 2
 Output: /imagine prompt: Impressionist painting by Van Gogh of a playful terrier running through a field of wildflowers. Sunlight filtering through the trees, bright colors, yellow color scheme like "Sunflowers." Loose brushwork --v 5 --ar 3:4 --s 500 --chaos 30 --quality 2

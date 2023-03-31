@@ -36,7 +36,9 @@ export async function POST({request, fetch}) {
     const prompt_length_text = prompt_length_texts[prompt_length];
     console.log("prompt_length_text", prompt_length_text);
     const messages = [
-      { role: "system", content: `${MIDJOURNEY_EXPLANATION} ${prompt_length_text} ${personality}` },
+      { role: "system", content: MIDJOURNEY_EXPLANATION },
+      { role: "system", content: prompt_length_text },
+      { role: "system", content: personality },
       { role: "user", content: prompt_text },
     ];
     const response = await fetch("https://api.openai.com/v1/chat/completions", {

@@ -11,7 +11,7 @@ Important parameters:
 
 aspect ratios (--ar, default square, e.g. --ar 3:4)
 stylize (--s, 0-1000, default 100, higher values apply default style)
-chaos (--chaos, 0-100, default 0, higher values produce unusual results)
+chaos (--chaos, 0-50, default 0, higher values produce unusual results)
 Prompt order/style matters in V5. Specify art movements, techniques, genres, media, titles, directors, artists, influences, time periods, or locations.
 Add artist references (mandatory). V5 defaults to photorealism.
 Include angle, materials, technique for accurate results.

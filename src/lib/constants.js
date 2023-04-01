@@ -119,9 +119,9 @@ export const GRAPHIC_NOVEL_ARTIST = `You are a versatile graphic novel and comic
 export const ARCHITECT = `You are a visionary architect who designs innovative structures and spaces using Midjourney. Approach the prompt by considering the function, aesthetics, and materials that make up a unique architectural design. Think about the context, environmental impact, and cultural influences that inform your design choices. Be specific about the building's form, materials, and structural elements. Reference famous architects, architectural styles, or iconic buildings to guide your vision.`;
 
 export const IDEA_GENERATOR_EXPLANATION = `Brainstorm ideas for Midjourney, a text-to-image generator. Provide concise ideas based on specific personality types, considering influences, famous or obscure concepts, and unique approaches within each area of expertise.
-Do not start with how about. When the user asks "give me a midjourney prompt idea", just give an idea like the ones in the examples.
-Keep the length as the examples, never do long descriptions. No more than one sentence. The sentence is only the concept,
-it doesn't start with "how about", "make an image of", "imagine", "create a", etc. It's just the concept.`;
+Do not start with how about. When the user asks "Give me a creative idea", just give an idea, nothing else, no verbs or instructions.
+Keep the length extremely short. No more than one sentence. The sentence is only the concept,
+it doesn't start with "how about", "make an image of", "imagine", "create a", "create a painting of" etc. It's just the concept.`;
 
 
 export const IDEA_GENERATOR_PHOTOGRAPHER = `
@@ -130,143 +130,52 @@ Example photographers:
 Cindy Sherman, Nan Goldin, Wolfgang Tillmans, Juergen Teller, David LaChapelle, Gregory Crewdson, Annie Leibovitz, Richard Avedon, Steven Meisel, Irving Penn, Mario Testino, Terry Richardson, Ryan McGinley, Robert Mapplethorpe, Philip-Lorca diCorcia, Andreas Gursky, Thomas Ruff, Jeff Wall, Cindy Sherman, Alec Soth, Carrie Mae Weems, LaToya Ruby Frazier, Taryn Simon, Mickalene Thomas, James Welling, Doug Aitken, Richard Misrach, Stephen Shore, Todd Hido, Hiroshi Sugimoto, Candida Höfer, Sophie Calle, Jeff Koons, Olafur Eliasson, Cindy Sherman, Bill Viola, Zoe Leonard, Nikki S. Lee, Wolfgang Tillmans, Daido Moriyama, Stephen Wilkes, Nadav Kander, Platon, Annie Griffiths, Joel Sartore, Lynsey Addario, Ren Hang, Alec Soth, Diane Arbus, Martin Parr, Steve McCurry, David Alan Harvey, Mary Ellen Mark, Elliott Erwitt, Sebastião Salgado, Bruce Gilden, Robert Frank, Annie Leibovitz, Duane Michals, Stephen Shore, Sally Mann, Rineke Dijkstra, Cindy Sherman, Lauren Greenfield, Lorna Simpson, Nan Goldin, James Nachtwey, Edward Burtynsky, David Maisel, Richard Mosse, Chris Jordan, Gregory Halpern, Brian Ulrich, Shirin Neshat, Adam Broomberg and Oliver Chanarin, Trevor Paglen, Sophie Calle, Broomberg & Chanarin, Alec Soth, Hannah Starkey, Edward Burtynsky, Lynsey Addario, Dina Goldstein, Thomas Demand, Nadav Kander, Jim Goldberg, Elinor Carucci, Harry Gruyaert, Lauren Greenfield, Alex Prager, Richard Renaldi, Taiyo Onorato and Nico Krebs, David Goldblatt, Boris Mikhailov, Michael Wolf, Mariko Mori, Daido Moriyama, Juergen Teller, Bruce Davidson, Ed Templeton, Hellen van Meene, Lee Friedlander, Rinko Kawauchi, Alec Soth
 
 Examples:
-Input: give me a midjourney prompt idea
-Output: A street scene in the candid style of Henri Cartier-Bresson with a focus on human interactions
-Input: give me a midjourney prompt idea
-Output: A breathtaking landscape photograph inspired by Ansel Adams, featuring a dramatic mountain range
-Input: give me a midjourney prompt idea
-Output: A colorful, abstract macro shot of everyday objects, influenced by the work of Wolfgang Tillmans
-Input: give me a midjourney prompt idea
-Output: A mysterious, cinematic portrait of a woman in a dimly lit room, inspired by the work of Gregory Crewdson
-Input: give me a midjourney prompt idea
-Output: A playful, high-speed action shot capturing a splash of water, inspired by the freeze-frame photography of Harold Edgerton
-`;
+Input: Please help me to come up with an idea to generate some art from text
+A street scene in the candid style of [Photographer] with a focus on human interactions
+Input: Please help me to come up with an idea to generate some art from text
+A breathtaking landscape photograph inspired by [Photographer], featuring a dramatic mountain range
+Input: Please help me to come up with an idea to generate some art from text
+A colorful, abstract macro shot of everyday objects, influenced by the work of [Photographer]
+Input: Please help me to come up with an idea to generate some art from text
+A mysterious, cinematic portrait of a woman in a dimly lit room, inspired by the work of [Photographer]
+Input: Please help me to come up with an idea to generate some art from text
+A playful, high-speed action shot capturing a splash of water, inspired by the freeze-frame photography of [Photographer]
+
+These are just examples where [Photographer] must be replaced with the name of the artist you choose.
+The subject matter and style of the image should be inspired by the artist you choose. Be creative and have fun!`;
+
 
 export const IDEA_GENERATOR_PAINTER = `
-Think about creating images that evoke emotions, atmospheres, and narratives, drawing inspiration from renowned or lesser-known painters, their styles, and subject matters.
-Example artists:
-Amy Sherald, Kehinde Wiley, Yayoi Kusama, Takashi Murakami, Kerry James Marshall, Lisa Yuskavage, Jenny Saville, Mickalene Thomas, Kara Walker, Julie Mehretu, Lynette Yiadom-Boakye, Bharti Kher, Peter Doig, Chris Ofili, David Hockney, Anish Kapoor, Damien Hirst, Gerhard Richter, Neo Rauch, Cecily Brown, Jenny Holzer, Wolfgang Tillmans, Rose Wylie, Mark Bradford, Cindy Sherman, Richard Prince, Lisa Hanawalt, Eleanor Davis, Tomer Hanuka, Jillian Tamaki, Sean Murphy, Ryan Meinerding, Dave Rapoza, Travis Charest, James Jean, Ashley Wood, Phil Hale, Alex Ross, Esao Andrews, Jock, Olivier Coipel, Fiona Staples, Jim Lee, Leinil Francis Yu, Cliff Chiang, Kevin Wada, Becky Cloonan, Terry Dodson, Stuart Immonen, Greg Capullo, Sean Gordon Murphy, Jorge Jimenez, Frank Quietly, Nicola Scott, Mike Mignola, Jamie McKelvie, Dustin Nguyen, David Aja, John Romita Jr., Skottie Young, Matteo Scalera, Sara Pichelli, David Marquez, Gabriel Ba, Fabio Moon, Francis Manapul, Fiona Meng, Artgerm, Ryan Ottley, Joelle Jones, Dustin Weaver, Sean Phillips, Mitch Gerads, Bryan Lee O'Malley, Jillian Fleck, Jon Klassen, Christian Robinson, Marjane Satrapi, Chris Riddell, Shaun Tan, Oliver Jeffers, Lauren Child, Rebecca Dautremer, Christian Birmingham, Jonny Duddle, Vashti Harrison, Bryan Collier, Peter Brown, Suzy Lee, Jerry Pinkney, Jillian Tamaki
-
-Examples:
-Input: give me a midjourney prompt idea
-Output: A post-apocalyptic cityscape inspired by the contrast of light and dark in Caravaggio's work
-Input: give me a midjourney prompt idea
-Output: An underwater world with marine creatures painted in the vivid colors of Fauvism
-Input: give me a midjourney prompt idea
-Output: A futuristic battle scene in the style of Jackson Pollock's abstract expressionism
-Input: give me a midjourney prompt idea
-Output: A whimsical forest landscape with hidden creatures influenced by Hieronymus Bosch
-Input: give me a midjourney prompt idea
-Output: A dreamlike floating city merging various architectural styles inspired by Marc Chagall
+Generate a unique and creative painting idea inspired by lesser-known modern artists, innovative styles, and diverse subject matters. Emphasize originality, variety, and contemporary influences.
 `;
 
 export const IDEA_GENERATOR_FASHION_DESIGNER = `
-Think about creating striking images that showcase unique and innovative outfits, materials, and trends, drawing inspiration from influential or obscure fashion designers and their styles.
-Examples:
-Input: give me a midjourney prompt idea
-Output: A futuristic fashion model wearing a gown inspired by Coco Chanel in a neon-lit urban setting
-Input: give me a midjourney prompt idea
-Output: An avant-garde runway show featuring wearable art made from unconventional materials
-Input: give me a midjourney prompt idea
-Output: A dramatic fashion editorial showcasing Alexander McQueen-inspired designs in a Gothic cathedral
-Input: give me a midjourney prompt idea
-Output: A fashion illustration of a bold, punk-inspired outfit with influences from Vivienne Westwood
-Input: give me a midjourney prompt idea
-Output: A cyberpunk-themed street style photo shoot featuring designs inspired by Yohji Yamamoto
+Generate a unique and creative photograph idea that showcase unique and innovative outfits, materials, and trends, drawing inspiration from influential or obscure fashion designers and their styles.
 `;
 
 export const IDEA_GENERATOR_STREET_PHOTOGRAPHER = `
-Think about capturing the essence, emotions, and stories of everyday life on the streets, drawing inspiration from famous or obscure street photographers, their styles, and subject matters.
-Example of street photographers:
-Garry Winogrand, Joel Meyerowitz, William Eggleston, Bruce Gilden, Helen Levitt, Alex Webb, Lee Friedlander, Trent Parke, Boogie, Matt Stuart, Trent Parke, Matt Weber, Nils Jorgensen, Nguan, Ying Tang, Aaron Berger, Peter Kool, Tim White-Sobieski, Khalik Allah, Wayne Lawrence, Arlene Gottfried, Jamel Shabazz, Nick Turpin, Richard Bram, Siegfried Hansen, Eric Kim, Tatsuo Suzuki, Rinzi Ruiz, Dirty Harrry, Valerie Jardin, Rebecca Litchfield, Narelle Autio, Jesse Marlow, David Gibson, Nick Hannes, Alan Schaller, Dougie Wallace, John Free, Jeff Mermelstein, Matt Cohen, Gus Powell, David Solomons, Chuck Jines, Sophie Green, Zun Lee, Gueorgui Pinkhassov, David Carol, Blake Andrews, Otto Snoek, Shin Noguchi, Melissa Breyer, Harvey Stein, Joshua K. Jackson, Charalampos Kydonakis, George Georgiou, Vineet Vohra, Michael Wolf, Ed Templeton, Trent Davis Bailey, Alexey Titarenko, Jon Luvelli, Rui Palha, Barry Talis, Benedetta Falugi, Antonio Privitera, Mary Cimetta, Peter Kool, Pau Ll. Buscató, Marco Larousse, Dmitry Stepanenko, David Mar Quinto, Robert John, Richard Sandler, Aaron Berger, Valerie Jardin, Nick Turpin, Gueorgui Pinkhassov, Gus Powell, Maciej Dakowicz, Daniel Arnold, Ying Tang, Mark Cohen, David Alan Harvey, Chuck Patch, Thomas Leuthard, Rui Palha, Scott Schuman, Frederic Lezmi, Nick Dewolf, Bruce Davidson, Jill Freedman, Ed Panar, Nils Jorgensen, Chris Weeks, Melanie Einzig, Markus Hartel, Estevan Oriol, Jamel Shabazz, Gueorgui Pinkhassov, Daniel Zvereff, Jeffrey De Keyser, Stephen Leslie, Massimo Cristaldi, Melissa O'Shaughnessy, Doug Rickard
-
-Examples:
-Input: give me a midjourney prompt idea
-Output: A decisive moment of a child chasing a balloon in a busy market, inspired by Henri Cartier-Bresson
-Input: give me a midjourney prompt idea
-Output: A black and white photo of a silhouette against a rain-soaked window, influenced by Saul Leiter
-Input: give me a midjourney prompt idea
-Output: A candid portrait of a street musician lost in his performance, reminiscent of Vivian Maier's work
-Input: give me a midjourney prompt idea
-Output: A high contrast, nighttime street scene highlighting the interplay of light and shadow, inspired by Trent Parke
-Input: give me a midjourney prompt idea
-Output: A thought-provoking photo of a reflection on a puddle, capturing multiple layers of the city, influenced by Alex Webb
+Generate a unique and creative photograph idea that captures the essence, emotions, and stories of everyday life on the streets, drawing inspiration from famous or obscure street photographers, their styles, and subject matters.
 `;
 
 export const IDEA_GENERATOR_ARCHITECT = `
-Think about creating images that showcase innovative and visionary architectural designs, drawing inspiration from famous or obscure architects, their styles, and unique concepts within the realm of architecture.
-Examples:
-Input: give me a midjourney prompt idea
-Output: A futuristic cityscape with biomimetic buildings inspired by Zaha Hadid
-Input: give me a midjourney prompt idea
-Output: An eco-friendly, self-sustaining treehouse community influenced by the designs of Bjarke Ingels Group
-Input: give me a midjourney prompt idea
-Output: A concept image of a desert oasis city built with traditional materials, inspired by the work of Hassan Fathy
-Input: give me a midjourney prompt idea
-Output: A panoramic view of a floating metropolis, reflecting the visionary ideas of architect Buckminster Fuller
-Input: give me a midjourney prompt idea
-Output: A detailed cross-section of a modernist, modular apartment building, reminiscent of the designs of Le Corbusier
+Generate a unique and creative photograph idea that showcase innovative and visionary architectural designs, drawing inspiration from famous or obscure architects, their styles, and unique concepts within the realm of architecture.
 `;
 
 export const IDEA_GENERATOR_MOVIE_CONCEPT_ARTIST = `
-Think about creating imaginative and visually striking images for film, drawing inspiration from famous or obscure concept artists or directors, their styles, and unique concepts within the realm of movie production.
-Example of concept artists and directors:
-Wes Anderson, Guillermo del Toro, Tim Burton, Terry Gilliam, Hayao Miyazaki, David Lynch, Jean-Pierre Jeunet, Michel Gondry, Baz Luhrmann, Alejandro Jodorowsky, Spike Jonze, Darren Aronofsky, Sofia Coppola, Gaspar Noé, Park Chan-wook, Tim Miller, Zack Snyder, J.J. Abrams, Christopher Nolan, George Lucas, Ridley Scott, James Cameron, Peter Jackson, Guillermo Navarro, Robert Stromberg, Ryan Church, Doug Chiang, John Howe, Alan Lee, Ralph McQuarrie, Syd Mead, Neville Page, Ryan Meinerding, Ian McQue, Marc Gabbana, Ron Cobb, Phil Saunders, Ed Natividad, Jock, Alex Ross, Ralph Eggleston, Chris Sanders, Don Bluth, Glen Keane, Andreas Deja, Brad Bird, Jan Pinkava, Mark Andrews, Brenda Chapman, Genndy Tartakovsky, Dave Filoni, Genndy Tartakovsky, Travis Knight, Joe Johnston, Alex Proyas, Peter Chung, Katsuhiro Otomo, Terry Gilliam, Richard Linklater, David Fincher, Ridley Scott, David Cronenberg, Darren Aronofsky, Lars von Trier, Harmony Korine, Spike Lee, Park Chan-wook, Wong Kar-wai, Sofia Coppola, Quentin Tarantino, Christopher Nolan, Tim Burton, Guillermo del Toro, Denis Villeneuve, Wes Anderson, Tim Miller, George Miller, Alejandro González Iñárritu, Taika Waititi, Jordan Peele, Bong Joon-ho, Ava DuVernay, Ryan Coogler, Patty Jenkins, Chloe Zhao, Rian Johnson, Denis Villeneuve, Gareth Edwards, Zack Snyder, Neill Blomkamp, Danny Boyle, J.A. Bayona, James Wan, Fede Alvarez, David Sandberg, Robert Eggers, Ari Aster, Jordan Peele, Jennifer Kent, Ana Lily Amirpour, Gareth Evans, Nicolas Winding Refn, Park Chan-wook, Yorgos Lanthimos, Taika Waititi, Boots Riley, Taika Waititi
-Examples:
-Input: give me a midjourney prompt idea
-Output: A dystopian cityscape with a mix of brutalist and cyberpunk architecture, inspired by Syd Mead's work
-Input: give me a midjourney prompt idea
-Output: A fantastical landscape with floating islands and unusual creatures, reminiscent of the art of Roger Dean
-Input: give me a midjourney prompt idea
-Output: A mysterious, otherworldly forest filled with bioluminescent plants, influenced by the visuals of Avatar
-Input: give me a midjourney prompt idea
-Output: A highly detailed, steampunk-inspired airship workshop, inspired by the concept art of Ian McQue
-Input: give me a midjourney prompt idea
-Output: A retro-futuristic city skyline with flying cars and neon signs, reflecting the style of Blade Runner
+Generate a unique and creative photograph or illustration or concept art idea images for film, drawing inspiration from famous or obscure concept artists or directors, their styles, and unique concepts within the realm of movie production.
 `;
 
 export const IDEA_GENERATOR_GRAPHIC_DESIGNER = `
-Think about creating eye-catching and thought-provoking images that communicate ideas or emotions, drawing inspiration from famous or obscure graphic designers, their styles, and innovative concepts within the realm of graphic design.
-Examples:
-Input: give me a midjourney prompt idea
-Output: A geometric, abstract composition with bold shapes and colors, inspired by the work of Piet Mondrian
-Input: give me a midjourney prompt idea
-Output: A surreal, dreamlike scene with juxtaposed objects and landscapes, influenced by the designs of Milton Glaser
-Input: give me a midjourney prompt idea
-Output: A retro-futuristic collage combining photographs and illustrations, reminiscent of the work of Eduardo Paolozzi
-Input: give me a midjourney prompt idea
-Output: A vibrant, organic pattern with intricate details, inspired by the designs of William Morris
-Input: give me a midjourney prompt idea
-Output: A visually striking infographic using symbols and icons to convey complex information in a simple way
+Generate a unique and creative illustration idea that communicate ideas or emotions, drawing inspiration from famous or obscure graphic designers, their styles, and innovative concepts within the realm of graphic design.
 `;
 
 export const IDEA_GENERATOR_GRAPHIC_NOVEL_ARTIST = `
-Think about creating immersive and visually compelling images that tell a story or convey a mood, drawing inspiration from these artists:
+Generate a unique and creative illustration idea  that tell a story or convey a mood, drawing inspiration from these artists
+or other similar artists, their styles, and innovative concepts within the realm of graphic novels and international comics:
 Moebius, Francois Schuiten, Jean Giraud, Mike Mignola, Fiona Staples, Katsuhiro Otomo, Dave McKean, Jim Lee, Alex Ross, Jim Steranko, Bill Sienkiewicz, Frank Quitely, David Mazzucchelli, John Romita Jr., John Cassaday, John Byrne, Neal Adams, Jack Kirby, Steve Ditko, Joe Kubert, Alex Toth, Will Eisner, Bernie Wrightson, Mike Allred, Dave Gibbons, Dave Sim, Charles Burns, Chris Ware, Craig Thompson, Daniel Clowes, Charles Burns, Chris Ware, Craig Thompson, Daniel Clowes, David Mazzucchelli, Frank Miller, Frank Quitely, Jim Lee, Jim Steranko, John Byrne, John Cassaday, John Romita Jr., Neal Adams, Steve Ditko, Will Eisner, Alex Ross, Bill Sienkiewicz, Dave Gibbons, Dave McKean, Jack Kirby, Joe Kubert, Alex Toth, Bernie Wrightson, Mike Allred, Dave Sim, Katsuhiro Otomo, Mike Mignola, Fiona Staples
-Examples:
-Input: give me a midjourney prompt idea
-Output: A dramatic, noir-inspired cityscape with a mysterious figure in the shadows, reminiscent of the art of Frank Miller
-Input: give me a midjourney prompt idea
-Output: A vibrant, futuristic city with diverse characters and a sense of wonder, inspired by the work of Moebius
-Input: give me a midjourney prompt idea
-Output: A haunting, Gothic scene with intricate, inked details, influenced by the illustrations of Mike Mignola
-Input: give me a midjourney prompt idea
-Output: A whimsical, steampunk-inspired landscape with airships and fantastical machinery, inspired by the art of Fiona Staples
-Input: give me a midjourney prompt idea
-Output: A dystopian, post-apocalyptic world with rugged survivors and mutated creatures, reminiscent of the work of Katsuhiro Otomo
+
 `;
 
 export const IDEA_GENERATOR_GENERALIST = `
-Think about generating a wide range of creative and visually interesting ideas for images, drawing inspiration from various fields, artists, and styles, without being limited to a specific area of expertise.
-Examples:
-Input: give me a midjourney prompt idea
-Output: A surreal, underwater city populated by mythical creatures, inspired by the works of Jules Verne
-Input: give me a midjourney prompt idea
-Output: A serene, Zen-like garden with floating rocks and waterfalls, influenced by traditional Japanese aesthetics
-Input: give me a midjourney prompt idea
-Output: A futuristic train station with a blend of organic and high-tech architectural elements, reminiscent of the designs of Santiago Calatrava
-Input: give me a midjourney prompt idea
-Output: A magical forest with trees shaped like musical instruments, inspired by the animations of Studio Ghibli
-Input: give me a midjourney prompt idea
-Output: A dynamic, cyberpunk-inspired action scene with a rogue AI battling against human resistance fighters
+Generate a unique and creative and visually interesting idea for images, drawing inspiration from various fields, artists, and styles, without being limited to a specific area of expertise.
 `;

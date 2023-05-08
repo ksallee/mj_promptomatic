@@ -180,14 +180,14 @@
 <SvelteSeo
     openGraph={{
     title: "Midjourney Prompt Generator",
-    description: "Midjourney v5 Gpt 3.5 Turbo Prompt Generator",
+    description: "Midjourney v5.1 Gpt 3.5 Turbo Prompt Generator",
     keywords: "Midjourney" +
       " OpenAI" +
       " GPT-3" +
       " gpt-3.5-Turbo" +
       " Midjourney Prompt Generator" +
       " Prompt Generator" +
-      " Midjourney v5 Gpt 3.5 Turbo Prompt Generator" +
+      " Midjourney v5.1 Gpt 3.5 Turbo Prompt Generator" +
       " AI Prompt Generator" +
       " AI Prompt" +
       " AI Prompt Generator",
@@ -209,7 +209,7 @@
   <div class="title">
     <img src="favicon.png" class="logo" alt="Midjourney Prompt Generator Logo" />
     <h1>
-      Midjourney v5 GPT-3.5-Turbo Prompt Generator
+      Midjourney v5.1 GPT-3.5-Turbo Prompt Generator
     </h1>
   </div>
 

@@ -10,7 +10,6 @@ import {
   IDEA_GENERATOR_MOVIE_CONCEPT_ARTIST,
   IDEA_GENERATOR_GRAPHIC_DESIGNER,
   IDEA_GENERATOR_GRAPHIC_NOVEL_ARTIST,
-  IDEA_GENERATOR_GENERALIST
 } from "$lib/constants.js";
 
 const personalities = {
@@ -23,7 +22,7 @@ const personalities = {
   movie_concept_artist: IDEA_GENERATOR_MOVIE_CONCEPT_ARTIST,
   graphic_designer: IDEA_GENERATOR_GRAPHIC_DESIGNER,
   graphic_novel_artist: IDEA_GENERATOR_GRAPHIC_NOVEL_ARTIST,
-  weight_master: IDEA_GENERATOR_GENERALIST
+  weight_master: IDEA_GENERATOR_PHOTOGRAPHER
 
 };
 

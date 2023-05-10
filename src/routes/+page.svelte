@@ -12,7 +12,6 @@
   const instructions = localStorageStore('instructions', '');
   const nbResults = localStorageStore('nbResults', [1, 20]);
   const selectedPersonality = localStorageStore('selectedPersonality', 'photographer');
-  const promptLength = localStorageStore('promptLength', 'Medium');
   const replies = localStorageStore('replies', []);
 
   let isLoading = false;
@@ -21,12 +20,6 @@
   let isCopied = [];
   $:buttonText = $nbResults[0] > 1 ? "Generate Prompts" : "Generate Prompt";
 
-  const promptLengthOptions = [
-    "Tiny",
-    "Small",
-    "Medium",
-    "Large",
-  ];
   const personalities = [
     {
       key: "photographer",
@@ -132,7 +125,6 @@
           personality_key: $selectedPersonality,
           api_key: $apiKey,
           num_replies: $nbResults[0],
-          prompt_length: $promptLength.value,
         }),
       });
 
@@ -255,16 +247,6 @@
       rows="5"
   />
 
-  <label for="prompt-length">Prompt Length:</label>
-  <div class="lengthOptions">
-    <Select
-        clearable={false}
-        searchable={false}
-        items={promptLengthOptions}
-        bind:value={$promptLength}
-        --font-size="13px";
-    />
-  </div>
   <div class="numberResults">
     <label for="nb-results">Number of Results: {$nbResults[0]}</label>
     <Slider bind:value={$nbResults} min={1} max={20} step={1} />

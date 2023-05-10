@@ -1,6 +1,6 @@
 import { MIDJOURNEY_EXPLANATION_SHORT, MIDJOURNEY_EXPLANATION, PHOTOGRAPHER, PAINTER, CRAZY_ARTIST, FASHION_DESIGNER} from "$lib/constants";
 import {STREET_PHOTOGRAPHER, ARCHITECT, MOVIE_CONCEPT_ARTIST, GRAPHIC_DESIGNER, GRAPHIC_NOVEL_ARTIST, WEIGHT_MASTER} from "$lib/constants.js";
-import {MIDJOURNEY_PROMPT_SMALL, MIDJOURNEY_PROMPT_MEDIUM, MIDJOURNEY_PROMPT_LARGE, MIDJOURNEY_PROMPT_TINY} from "$lib/constants.js";
+import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
 import { error, json } from '@sveltejs/kit';
 
 const personalities = {
@@ -18,7 +18,7 @@ const personalities = {
 };
 
 export async function POST({request, fetch}) {
-  const { prompt_text, personality_key, api_key, prompt_length = "Medium", num_replies = 1 } = await request.json();
+  const { prompt_text, personality_key, api_key, num_replies = 1 } = await request.json();
   const personality = personalities[personality_key];
 
   if (!prompt_text || !personality_key || !api_key) {
@@ -26,20 +26,12 @@ export async function POST({request, fetch}) {
   }
 
   try {
-    const max_tokens = 200;
-    const prompt_length_texts = {
-      "Tiny": MIDJOURNEY_PROMPT_TINY,
-      "Small": MIDJOURNEY_PROMPT_SMALL,
-      "Medium": MIDJOURNEY_PROMPT_MEDIUM,
-      "Large": MIDJOURNEY_PROMPT_LARGE,
-    }
-    const prompt_length_text = prompt_length_texts[prompt_length];
-    console.log("prompt_length_text", prompt_length_text);
+    const max_tokens = 100;
     const messages = [
       { role: "system", content: MIDJOURNEY_EXPLANATION_SHORT},
       { role: "system", content: MIDJOURNEY_EXPLANATION },
-      { role: "system", content: prompt_length_text },
       { role: "system", content: personality },
+      { role: "system", content: PROMPT_FILLER_EXPLANATION},
       { role: "user", content: prompt_text },
     ];
     const response = await fetch("https://api.openai.com/v1/chat/completions", {

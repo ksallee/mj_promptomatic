@@ -36,9 +36,9 @@ export async function POST({request, fetch}) {
   }
 
   try {
-    const max_tokens = 200;
+    const max_tokens = 40;
     const messages = [
-      { role: "system", content: personality + " " + IDEA_GENERATOR_EXPLANATION },
+      { role: "system", content: IDEA_GENERATOR_EXPLANATION + " " + personality },
       { role: "user", content: "Give me a creative idea"},
     ];
 

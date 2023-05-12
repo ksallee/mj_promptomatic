@@ -26,7 +26,7 @@ export async function POST({request, fetch}) {
   }
 
   try {
-    const max_tokens = 300;
+    const max_tokens = 500;
     const messages = [
       { role: "system", content: MIDJOURNEY_EXPLANATION_SHORT},
       { role: "system", content: MIDJOURNEY_EXPLANATION },
@@ -46,7 +46,7 @@ export async function POST({request, fetch}) {
         max_tokens: max_tokens,
         n: 1,
         stop: null,
-        temperature: 0.7,
+        temperature: 1.0,
       }),
     });
     const responseData = await response.json();
@@ -54,7 +54,11 @@ export async function POST({request, fetch}) {
       throw new Error(responseData.error.message)
     }
     // only one reply, but as a string separated by newlines. Make it an array.
-    const replies = responseData.choices[0].message.content.trim().split("\n");
+    const reply = responseData.choices[0].message.content.trim();
+    // First remove all text before the first /imagine prompt:
+    const replyWithoutIntro = reply.substring(reply.indexOf("/imagine"));
+    // Then split the string into an array of replies, separated by newlines:
+    const replies = replyWithoutIntro.split("\n");
     return json({
       status: 200,
       replies: replies,

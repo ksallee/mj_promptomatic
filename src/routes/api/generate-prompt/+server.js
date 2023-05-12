@@ -26,13 +26,13 @@ export async function POST({request, fetch}) {
   }
 
   try {
-    const max_tokens = 100;
+    const max_tokens = 300;
     const messages = [
       { role: "system", content: MIDJOURNEY_EXPLANATION_SHORT},
       { role: "system", content: MIDJOURNEY_EXPLANATION },
       { role: "system", content: personality },
       { role: "system", content: PROMPT_FILLER_EXPLANATION},
-      { role: "user", content: prompt_text },
+      { role: "user", content: `Give me ${num_replies} examples of: ${prompt_text}` },
     ];
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -44,7 +44,7 @@ export async function POST({request, fetch}) {
         model: "gpt-3.5-turbo",
         messages: messages,
         max_tokens: max_tokens,
-        n: num_replies,
+        n: 1,
         stop: null,
         temperature: 0.7,
       }),
@@ -53,9 +53,8 @@ export async function POST({request, fetch}) {
     if (responseData.error) {
       throw new Error(responseData.error.message)
     }
-    const replies = responseData.choices.map((choice) => choice.message.content.trim());
-    console.log("replies", responseData);
-
+    // only one reply, but as a string separated by newlines. Make it an array.
+    const replies = responseData.choices[0].message.content.trim().split("\n");
     return json({
       status: 200,
       replies: replies,

@@ -166,10 +166,10 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
                       return parsed.choices[0].delta.content;
                   }
               } catch (err) {
-                  reply = reply.substring(reply.indexOf("/imagine"))
+                  reply = reply.substring(reply.indexOf("prompt:"))
                   if (reply.length > 0){
                     {
-                      $replies.push(reply);
+                      $replies.push("/imagine " + reply);
                       $replies = [... $replies]
                     }
                   }

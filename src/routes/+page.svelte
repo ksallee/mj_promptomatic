@@ -69,11 +69,11 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
     //   label: "Crazy Artist",
     //   imgSrc: "crazy_artist.png",
     // }
-    {
-      key: "weight_master",
-      label: "Weight Master",
-      imgSrc: "weight_master.png",
-    }
+    // {
+    //   key: "weight_master",
+    //   label: "Weight Master",
+    //   imgSrc: "weight_master.png",
+    // }
 
   ];
   async function handleSubmitIdea() {
@@ -287,7 +287,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
   </div>
   <div class="instructions-header">
     <label class="instructions-label" for="instructions">Instructions:</label>
-    <button class="instructionsButton" on:click={handleSubmitIdea} disabled="{!$apiKey || isIdeasLoading}">I'm lazy!</button>
+    <button class="instructionsButton" on:click={handleSubmitIdea} disabled="{!$apiKey || isIdeasLoading}">Generate</button>
     {#if isIdeasLoading}
     <div class="loading">
       <SyncLoader size="2.5" color="#5147a8" unit="rem" duration="0.5s"/>

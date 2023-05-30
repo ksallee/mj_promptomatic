@@ -1,5 +1,6 @@
 import { IDEA_GENERATOR_EXPLANATION,  } from "$lib/constants";
 import { error, json } from '@sveltejs/kit';
+import {MIDJOURNEY_EXPLANATION_TINY} from "$lib/constants";
 import {
   IDEA_GENERATOR_PHOTOGRAPHER,
   IDEA_GENERATOR_PAINTER,
@@ -11,6 +12,7 @@ import {
   IDEA_GENERATOR_GRAPHIC_DESIGNER,
   IDEA_GENERATOR_GRAPHIC_NOVEL_ARTIST,
 } from "$lib/constants.js";
+
 
 const personalities = {
   photographer: IDEA_GENERATOR_PHOTOGRAPHER,
@@ -35,9 +37,10 @@ export async function POST({request, fetch}) {
   }
 
   try {
-    const max_tokens = 40;
+    const max_tokens = 50;
     const messages = [
-      { role: "system", content: IDEA_GENERATOR_EXPLANATION + " " + personality },
+      { role: "system", content: personality},
+      { role: "system", content: IDEA_GENERATOR_EXPLANATION},
       { role: "user", content: "Give me a creative idea"},
     ];
 
@@ -47,7 +50,7 @@ export async function POST({request, fetch}) {
         max_tokens: max_tokens,
         n: 1,
         stop: null,
-        temperature: 1.0,
+        temperature: 1,
       });
     console.log("DATA", data);
 

@@ -169,8 +169,25 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
                   reply = reply.substring(reply.indexOf("prompt:"))
                   if (reply.length > 0){
                     {
-                      $replies.push("/imagine " + reply);
-                      $replies = [... $replies]
+                      // sometimes there's more than one reply, so we'll split them up
+                      reply = "/imagine " + reply;
+                      // Split by "/imagine prompt:"
+                      let splitReplies = reply.split("/imagine prompt:").filter(str => str.length > 0);
+
+                      // Add "/imagine prompt:" back to each reply
+                      splitReplies = splitReplies.map(str => "/imagine prompt:" + str.trim());
+                      let lastFiveInstructions = $instructions.slice(-5);
+                      splitReplies = splitReplies.map(str => {
+                        let index = str.lastIndexOf(lastFiveInstructions);
+                        if(index !== -1) {
+                          // + 5 is added to include the lastFiveInstructions in the substring
+                          return str.substring(0, index + 5);
+                        }
+                        return str;
+                      });
+                      if (splitReplies.length > 0) {
+                        $replies = [...$replies, ...splitReplies]
+                      }
                     }
                   }
               }

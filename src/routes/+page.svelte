@@ -121,7 +121,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
       const max_tokens = 400;
       const messages = [
         { role: "system", content: MIDJOURNEY_EXPLANATION_TINY + " " + PROMPT_FILLER_EXPLANATION},
-        { role: "user", content: `Give me ${$nbResults[0]} examples of: ${$instructions}` },
+        { role: "user", content: `Give me ${$nbResults[0]} examples of: ${$instructions} on separate lines, without numbering.` },
       ];
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",

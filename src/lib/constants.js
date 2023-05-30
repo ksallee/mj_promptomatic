@@ -4,7 +4,7 @@ export const MIDJOURNEY_EXPLANATION_SHORT = `
 Your goal is to create Midjourney prompts as: /imagine prompt: [prompt with optional params]
 Optional parameters (--parameter [value]) are placed last. Nothing after them.
 Example: /imagine prompt: A dog --ar 3:4 --s 1000 --chaos 100 --v 5.1
-Midjourney V5 generates images from text. Add --v 5.1 at the end.
+Midjourney V5 generates images from text.
 VERY IMPORTANT: Avoid mainstream artists, think outside the box. If I say labyrinth, it shouldn't always be by Escher. Favor modern artists than the main ones that everyone knows like Van Gogh, Dali, etc. You can still use them
 but try to be creative. Do not use M.C. Escher, Van Gogh, Dali, Picasso, Monet, etc. except every once in a while.
 Important parameters:
@@ -204,5 +204,10 @@ chaos (--chaos, 0-50, default = 0, higher = unusual results)
 
 export const PROMPT_FILLER_EXPLANATION = `
 Fill in the blanks in the input with an example, never the same text, add /imagine prompt: at the beginning.
-Replace words in brackets with a good filler sentence or word, but keep the rest the same.  
+Replace words in brackets with a good filler sentence or word, but keep the rest the same.
+E.g., Given text: Give me 3 examples of: alien {action} {scenery} in {retro-futuristic fashion outfit} by {comic book artist}
+Output: 
+/imagine prompt: alien drinking on a distant planet in retro-futuristic 60s tuxedo by Francois Schuiten
+/imagine prompt: alien fighting in a futuristic city in a retro-futuristic armor by Jim Lee
+/imagine prompt: alien exploring an abandoned spaceship in a retro-futuristic space suit by Moebius
 `

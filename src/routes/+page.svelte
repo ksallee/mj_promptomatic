@@ -118,7 +118,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
     errorMessage = null;
     isLoading = true;
     try {
-      const max_tokens = 400;
+      const max_tokens = 1000;
       const messages = [
         { role: "system", content: MIDJOURNEY_EXPLANATION_TINY + " " + PROMPT_FILLER_EXPLANATION},
         { role: "user", content: `Give me ${$nbResults[0]} examples of: ${$instructions} on separate lines, without numbering.` },
@@ -235,7 +235,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
       " gpt-3.5-Turbo" +
       " Midjourney Prompt Generator" +
       " Prompt Generator" +
-      " Midjourney v5.1 Gpt 3.5 Turbo Prompt Generator" +
+      " Midjourney Gpt 3.5 Turbo Prompt Generator" +
       " AI Prompt Generator" +
       " AI Prompt" +
       " AI Prompt Generator",
@@ -257,7 +257,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
   <div class="title">
     <img src="favicon.png" class="logo" alt="Midjourney Prompt Generator Logo" />
     <h1>
-      Midjourney v5.1 GPT-3.5-Turbo Prompt Generator
+      Midjourney GPT-3.5-Turbo Prompt Generator
     </h1>
   </div>
 
@@ -329,17 +329,20 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
       {#each $replies as reply, index}
         <div class="result" transition:fade>
           <div class="result-content">
-            <h3>Result {index + 1}:</h3>
+            <div class="result-title">
+              <h3>Result {index + 1}:</h3>
+              <div class="result-icon">
+                <button class="copy-button {isCopied[index] ? 'pushed' : ''}" on:click={() => copyToClipboard(reply, index)}>
+                  <Icon icon="lucide:clipboard-copy" width="18px" />
+                </button>
+                {#if isCopied[index]}
+                  <div class="tooltip">Copied!</div>
+                {/if}
+              </div>
+            </div>
             <p>{reply}</p>
           </div>
-          <div class="result-icon">
-            <button class="copy-button {isCopied[index] ? 'pushed' : ''}" on:click={() => copyToClipboard(reply, index)}>
-              <Icon icon="lucide:clipboard-copy" width="24px" />
-            </button>
-            {#if isCopied[index]}
-              <div class="tooltip">Copied!</div>
-            {/if}
-          </div>
+
         </div>
       {/each}
     </div>
@@ -355,6 +358,12 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
 </main>
 
 <style>
+  .result-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
   .instructions-header{
     display: flex;
     flex-direction: row;
@@ -382,6 +391,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
   }
 
   .copy-button:focus {

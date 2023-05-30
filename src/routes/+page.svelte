@@ -186,7 +186,10 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
                         return str;
                       });
                       if (splitReplies.length > 0) {
-                        $replies = [...$replies, ...splitReplies]
+                        for (const splitReply of splitReplies) {
+                          if (splitReply != "" && splitReply != $replies[$replies.length - 1])
+                            $replies = [...$replies, splitReply];
+                        }
                       }
                     }
                   }

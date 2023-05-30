@@ -151,12 +151,13 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
         }
         // Massage and parse the chunk of data
         const chunk = decoder.decode(value);
-        const lines = chunk.split("\\n");
+        const lines = chunk.split("data:");
+
         // this is what a line looks like:
         // {"id":"chatcmpl-7Lly9472ato9dwbVlFybPbvvW6sYa","object":"chat.completion.chunk","created":1685423637,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"."},"index":0,"finish_reason":null}]}
         // JSON can be malformed, and we only care about "content":"." so we'll do some string parsing
         const parsedLines = lines
-          .map(line => line.replace(/^data: /, "").trim())
+          .map(line => line.replace(/\\n\\n$/, "").trim())
           .filter(line => line !== "" && line !== "[DONE]")
           .map(line => {
               try {
@@ -166,42 +167,31 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
                       return parsed.choices[0].delta.content;
                   }
               } catch (err) {
-                  reply = reply.substring(reply.indexOf("prompt:"))
-                  if (reply.length > 0){
-                    {
-                      // sometimes there's more than one reply, so we'll split them up
-                      reply = "/imagine " + reply;
-                      // Split by "/imagine prompt:"
-                      let splitReplies = reply.split("/imagine prompt:").filter(str => str.length > 0);
-
-                      // Add "/imagine prompt:" back to each reply
-                      splitReplies = splitReplies.map(str => "/imagine prompt:" + str.trim());
-                      let lastFiveInstructions = $instructions.slice(-5);
-                      splitReplies = splitReplies.map(str => {
-                        let index = str.lastIndexOf(lastFiveInstructions);
-                        if(index !== -1) {
-                          // + 5 is added to include the lastFiveInstructions in the substring
-                          return str.substring(0, index + 5);
-                        }
-                        return str;
-                      });
-                      if (splitReplies.length > 0) {
-                        for (const splitReply of splitReplies) {
-                          if (splitReply != "" && splitReply != $replies[$replies.length - 1])
-                            $replies = [...$replies, splitReply];
-                            reply = "";
-                        }
-                      }
-                    }
-                  }
+                  console.log("PROBLEM", err, `"${line}"`);
               }
               return null;
           })
           .filter(content => content !== null);  // Remove null items
         for (const parsedLine of parsedLines) {
-          reply += parsedLine;
+          if (parsedLine==""){
+            $replies = [...$replies, reply];
+            reply = "";
+          }
+          else if (parsedLine.includes("\n")){
+            reply += parsedLine.substring(0, parsedLine.indexOf("\n"));
+            reply = reply.substring(reply.indexOf("/imagine"));
+            $replies = [...$replies.slice(0, $replies.length - 1), reply];
+            reply = parsedLine.substring(parsedLine.indexOf("\n"));
+            $replies = [...$replies, reply];
+          }
+          else{
+            reply += parsedLine;
+            $replies = [...$replies.slice(0, $replies.length - 1), reply];
+          }
         }
       }
+      reply = $replies[$replies.length - 1];
+      $replies = [...$replies.slice(0, $replies.length - 1), reply.substring(reply.indexOf("/imagine"))];
   }
   catch (err) {
     console.error("Error generating prompt:", err);
@@ -336,7 +326,7 @@ import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
   {/if}
   {#if $replies && $replies.length > 0}
     <div class="results">
-      {#each $replies as reply, index (reply + index)}
+      {#each $replies as reply, index}
         <div class="result" transition:fade>
           <div class="result-content">
             <h3>Result {index + 1}:</h3>

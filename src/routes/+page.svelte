@@ -3,10 +3,13 @@
   import {SyncLoader} from "svelte-loading-spinners";
   import Slider from '@bulatdashiev/svelte-slider';
   import { ESTIMATED_CHAR_LIMIT } from "$lib/constants";
-  import Select from 'svelte-select';
   import Icon from "@iconify/svelte";
   import SvelteSeo from "svelte-seo";
   import { localStorageStore } from '$lib/localStorageStore';
+  import {error} from "@sveltejs/kit";
+  import { MIDJOURNEY_EXPLANATION_TINY} from "$lib/constants";
+import {PROMPT_FILLER_EXPLANATION} from "$lib/constants.js";
+
 
   const apiKey = localStorageStore('apiKey', '');
   const instructions = localStorageStore('instructions', '');
@@ -115,32 +118,74 @@
     errorMessage = null;
     isLoading = true;
     try {
-      const response = await fetch('/api/generate-prompt', {
-        method: 'POST',
+      const max_tokens = 400;
+      const messages = [
+        { role: "system", content: MIDJOURNEY_EXPLANATION_TINY + " " + PROMPT_FILLER_EXPLANATION},
+        { role: "user", content: `Give me ${$nbResults[0]} examples of: ${$instructions}` },
+      ];
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${$apiKey}`,
         },
         body: JSON.stringify({
-          prompt_text: $instructions,
-          personality_key: $selectedPersonality,
-          api_key: $apiKey,
-          num_replies: $nbResults[0],
+          model: "gpt-3.5-turbo",
+          messages: messages,
+          max_tokens: max_tokens,
+          n: 1,
+          stop: null,
+          temperature: 1.0,
+          stream: true,
         }),
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error:", errorData)
-        errorMessage = errorData.message || 'An unknown error occurred.';
-      } else {
-        const data = await response.json();
-        $replies = [...data.replies];
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      errorMessage = 'Error: ' + error;
+      // Read the response as a stream of data
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
       $replies = [];
-    }
+      let reply = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+          break;
+        }
+        // Massage and parse the chunk of data
+        const chunk = decoder.decode(value);
+        const lines = chunk.split("\\n");
+        // this is what a line looks like:
+        // {"id":"chatcmpl-7Lly9472ato9dwbVlFybPbvvW6sYa","object":"chat.completion.chunk","created":1685423637,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"."},"index":0,"finish_reason":null}]}
+        // JSON can be malformed, and we only care about "content":"." so we'll do some string parsing
+        const parsedLines = lines
+          .map(line => line.replace(/^data: /, "").trim())
+          .filter(line => line !== "" && line !== "[DONE]")
+          .map(line => {
+              try {
+                  let parsed = JSON.parse(line);
+                  // if the parsed line has choices array and the first item has a 'content' property
+                  if (parsed.choices && parsed.choices[0] && 'content' in parsed.choices[0].delta) {
+                      return parsed.choices[0].delta.content;
+                  }
+              } catch (err) {
+                  reply = reply.substring(reply.indexOf("/imagine"))
+                  if (reply.length > 0){
+                    {
+                      $replies.push(reply);
+                      $replies = [... $replies]
+                    }
+                  }
+              }
+              return null;
+          })
+          .filter(content => content !== null);  // Remove null items
+        for (const parsedLine of parsedLines) {
+          reply += parsedLine;
+        }
+      }
+  }
+  catch (err) {
+    console.error("Error generating prompt:", err);
+    errorMessage = 'Error: ' + error;
+  }
     isLoading = false;
   }
   async function copyToClipboard(text, index) {
@@ -270,7 +315,7 @@
   {/if}
   {#if $replies && $replies.length > 0}
     <div class="results">
-      {#each $replies as reply, index (reply)}
+      {#each $replies as reply, index (reply + index)}
         <div class="result" transition:fade>
           <div class="result-content">
             <h3>Result {index + 1}:</h3>

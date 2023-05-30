@@ -194,39 +194,15 @@ Output: A {type of project} that brings together professionals from {discipline 
 `;
 
 
+export const MIDJOURNEY_EXPLANATION_TINY = `
+Create Midjourney prompts as: /imagine prompt: [prompt with optional params]
+Optional parameters (--parameter [value]) are last. E.g., /imagine prompt: A dog --ar 3:4 --s 1000 --chaos 100 --v 5.1
+aspect ratios (--ar, default = square, preferred 2:3, 3:4, 4:5, 5:4, 4:3, 3:2 )
+stylize (--s, 0-1000, default = 100, higher = apply style)
+chaos (--chaos, 0-50, default = 0, higher = unusual results)
+`
 
 export const PROMPT_FILLER_EXPLANATION = `
-You are trying to fill in the blanks in the input.
-For example, you are given the following text, and the thing to fill: 
-Input: Give me 8 examples of: {actor} portrait {style}
-Output: 
-/imagine prompt: Ryan Gosling portrait minimalism --ar 3:4 --s 700 --chaos 20 --v 5.1
-/imagine prompt: Brad Pitt portrait Vogue photoshoot --ar 2:3 --s 100 --chaos 5 --v 5.1
-/imagine prompt: Tom Cruise portrait Renaissance --ar 3:2 --s 1000 --chaos 50 --v 5.1
-/imagine prompt: Keanu Reeves portrait cyberpunk --ar 4:3 --s 300 --chaos 50 --v 5.1
-/imagine prompt: Scarlett Johansson portrait anime --ar 5:4 --s 500 --chaos 20 --v 5.1
-/imagine prompt: Zendaya portrait pop art --ar 1:1 --s 200 --chaos 10 --v 5.1
-/imagine prompt: Chris Hemsworth portrait superhero --ar 4:5 --s 300 --chaos 30 --v 5.1
-/imagine prompt: Emma Watson portrait fairytale --ar 2:3 --s 400 --chaos 40 --v 5.1
-
-One prompt per line. Don't put numbers or bullet points, just the text.
-
-Input: Give me 9 examples of: alien {action} {scenery} by {comic book artist} --style raw
-Output: 
-/imagine prompt: alien drinking on a distant planet by Francois Schuiten --ar 4:3 --s 300 --chaos 35 --v 5.1  --style raw
-/imagine prompt: alien fighting in a futuristic city by Jim Lee --ar 2:1 --s 500 --chaos 60 --v 5.1 --style raw
-/imagine prompt: alien exploring an abandoned spaceship by Moebius --ar 16:9 --s 800 --chaos 40 --v 5.1 --style raw
-/imagine prompt: alien dancing in a neon-lit bar by Mike Mignola --ar 3:2 --s 400 --chaos 25 --v 5.1 --style raw
-/imagine prompt: alien repairing a spaceship in a garage by Fiona Staples --ar 4:3 --s 700 --chaos 45 --v 5.1 --style raw
-/imagine prompt: alien reading a book in a vast library by Alex Ross --ar 1:1 --s 600 --chaos 30 --v 5.1 --style raw
-/imagine prompt: alien playing a musical instrument in a jazz club by Neal Adams --ar 3:4 --s 200 --chaos 20 --v 5.1 --style raw
-/imagine prompt: alien cooking in a vintage kitchen by Amanda Conner --ar 5:4 --s 350 --chaos 50 --v 5.1 --style raw
-/imagine prompt: alien meditating in a serene forest by Frank Quitely --ar 2:3 --s 450 --chaos 55 --v 5.1 --style raw
-
-Stick to filling in the blanks, don't add anything else to the output except the parameters.
-Don't add "sure, here you are", only the examples.
-If the prompt contains something that looks like a parameter, like "--style raw", add it to the examples.
-Parameters are always at the end separated by only spaces.
-Just replace the words in brackets, keep the rest exactly the same.
-Even if you don't like the syntax with a lot of commas, please stick to it.
+Fill in the blanks in the input with an example, never the same text, add /imagine prompt: at the beginning.
+Replace words in brackets with a good filler sentence or word, but keep the rest the same.  
 `
